@@ -10,9 +10,9 @@ public class MenuDialogs
         {
             Console.Clear();
             Console.WriteLine("Welcome to ContactManager\n");
-            Console.WriteLine("1. Contacts");
-            Console.WriteLine("2. Create Contact");
-            Console.WriteLine("3. Exit Program");
+            Console.WriteLine("1. Contacts.");
+            Console.WriteLine("2. Create Contact.");
+            Console.WriteLine("3. Exit Program.");
             Console.WriteLine();
 
             var option = Console.ReadLine();
