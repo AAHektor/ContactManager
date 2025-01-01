@@ -4,6 +4,10 @@ public class MenuDialogs
 {
     public void CreateUserDialog()
     {
+        var ShowContacts = new ContactListService();
+        var ShowContactCreate = new ContactCreateService();
+        var QuitProgam = new QuitProgramService();
+
         bool running = true;
 
         while (running)
@@ -15,20 +19,22 @@ public class MenuDialogs
             Console.WriteLine("3. Exit Program.");
             Console.WriteLine();
 
-            var option = Console.ReadLine();
+            var option = Console.ReadLine()!;
 
-            switch (option)
+            
+
+            switch (option.ToLower())
             {
                 case "1":
-                    ContactList();
+                    ShowContacts.ShowContactList();
                     break;
 
                 case "2":
-                    ContactCreate();
+                    ShowContactCreate.ShowContactCreate();
                     break;
 
                 case "3":
-                    running = false;
+                    QuitProgam.ShowQuitProgram();
                     break;
 
                 default:
