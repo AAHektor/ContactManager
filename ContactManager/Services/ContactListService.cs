@@ -1,10 +1,41 @@
-﻿namespace ContactManager.Services;
+﻿using System.Text.Json;
+using ContactManager.Models;
+
+namespace ContactManager.Services;
 
 public class ContactListService
 {
+    private readonly string FilePath = "contacts.json";
     public void ShowContactList()
     {
-        Console.WriteLine("Testing");
+        if (!File.Exists(FilePath))
+        {
+            Console.WriteLine("No contacts found");
+            return;
+        }
+
+        string json = File.ReadAllText(FilePath);
+
+        List<Contact>? contacts = JsonSerializer.Deserialize<List<Contact>>(json);
+
+        if (contacts == null || contacts.Count == 0)
+        {
+            Console.WriteLine("No contacts found. ");
+            return;
+        }
+
+        Console.WriteLine("Contacts:");
+        foreach (var contact in contacts)
+        {
+            Console.WriteLine($"Name: {contact.FirstName} {contact.LastName}");
+            Console.WriteLine($"Email: {contact.Email}");
+            Console.WriteLine($"Number: {contact.Number}");
+            Console.WriteLine($"Address: {contact.Address}, {contact.PostalCode} {contact.City}");
+            Console.WriteLine($"ID: {contact.Id}");
+            Console.WriteLine(new string('-', 40));
+
+        }
+
         Console.ReadKey();
     }
 }

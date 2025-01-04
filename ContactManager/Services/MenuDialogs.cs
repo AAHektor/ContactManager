@@ -27,6 +27,7 @@ public class MenuDialogs
             {
                 case "1":
                     ShowContacts.ShowContactList();
+                    Console.ReadKey();
                     break;
 
                 case "2":
