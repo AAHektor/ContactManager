@@ -14,26 +14,35 @@ public class ContactListService
             return;
         }
 
-        string json = File.ReadAllText(FilePath);
-
-        List<Contact>? contacts = JsonSerializer.Deserialize<List<Contact>>(json);
-
-        if (contacts == null || contacts.Count == 0)
+        try
         {
-            Console.WriteLine("No contacts found. ");
-            return;
-        }
+            string json = File.ReadAllText(FilePath);
 
-        Console.WriteLine("Contacts:");
-        foreach (var contact in contacts)
-        {
-            Console.WriteLine($"Name: {contact.FirstName} {contact.LastName}");
-            Console.WriteLine($"Email: {contact.Email}");
-            Console.WriteLine($"Number: {contact.Number}");
-            Console.WriteLine($"Address: {contact.Address}, {contact.PostalCode} {contact.City}");
-            Console.WriteLine($"ID: {contact.Id}");
+            List<Contact>? contacts = JsonSerializer.Deserialize<List<Contact>>(json);
+
+            if (contacts == null || contacts.Count == 0)
+            {
+                Console.WriteLine("No contacts found. ");
+                return;
+            }
+
+            Console.WriteLine("CONTACTS:");
             Console.WriteLine(new string('-', 40));
+            foreach (var contact in contacts)
+            {
+                Console.WriteLine($"Name: {contact.FirstName} {contact.LastName}");
+                Console.WriteLine($"Email: {contact.Email}");
+                Console.WriteLine($"Number: {contact.Number}");
+                Console.WriteLine($"Address: {contact.Address}, {contact.PostalCode} {contact.City}");
+                Console.WriteLine($"ID: {contact.Id}");
+                Console.WriteLine(new string('-', 40));
 
+            }
+
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"An error occurred {ex.Message}");
         }
 
         Console.ReadKey();

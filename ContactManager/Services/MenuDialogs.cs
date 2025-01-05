@@ -14,9 +14,9 @@ public class MenuDialogs
         {
             Console.Clear();
             Console.WriteLine("Welcome to ContactManager\n");
-            Console.WriteLine("1. Contacts.");
-            Console.WriteLine("2. Create Contact.");
-            Console.WriteLine("3. Exit Program.");
+            Console.WriteLine("1. CONTACTS.");
+            Console.WriteLine("2. ADD NEW CONTACT.");
+            Console.WriteLine("3. EXIT APPLICATION.");
             Console.WriteLine();
 
             var option = Console.ReadLine()!;
@@ -26,11 +26,13 @@ public class MenuDialogs
             switch (option.ToLower())
             {
                 case "1":
+                    Console.Clear();
                     ShowContacts.ShowContactList();
                     Console.ReadKey();
                     break;
 
                 case "2":
+                    Console.Clear();
                     ShowContactCreate.ShowContactCreate();
                     break;
 

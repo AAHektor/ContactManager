@@ -37,6 +37,8 @@ public class ContactCreateService
         SaveContactToFile(newContact);
         Console.WriteLine("\nContact successfully created.");
 
+        Console.ReadKey();
+
     }
 
     private void SaveContactToFile(Contact contact)
