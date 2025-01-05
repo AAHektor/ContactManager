@@ -1,5 +1,7 @@
 ﻿
 
+using ContactManager.Helpers;
+
 namespace ContactManager.Models;
 
 public class Contact
@@ -12,11 +14,11 @@ public class Contact
     public string PostalCode { get; set; } = null!;
     public string City { get; set; } = null!;
 
-    public Guid Id { get; set; }
+    public string Id { get; set; }
 
     public Contact()
     {
-        Id = Guid.NewGuid();
+        Id = UniqueIdentifierGenerator.Generate();
     }
 
 }
