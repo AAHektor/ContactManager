@@ -1,13 +1,12 @@
 ﻿
 using ContactManager.Models;
 using System.Text.Json;
+using ContactManager.Helpers;
 
 namespace ContactManager.Services;
 
 public class ContactCreateService
 {
-
-    private const string FilePath = "contacts.json";
     public void ShowContactCreate()
     {
 
@@ -34,29 +33,11 @@ public class ContactCreateService
         Console.Write("Enter city: ");
         newContact.City = Console.ReadLine()!;
 
-        SaveContactToFile(newContact);
+        SaveContactToFile.SaveContactToJsFile(newContact, "contacts.json");
+
         Console.WriteLine("\nContact successfully created.");
 
         Console.ReadKey();
 
-    }
-
-    private void SaveContactToFile(Contact contact)
-    {
-        List<Contact> contacts;
-        if (File.Exists(FilePath))
-        {
-            string existingJson = File.ReadAllText(FilePath);
-            contacts = JsonSerializer.Deserialize<List<Contact>>(existingJson) ?? new List<Contact>();
-        }
-        else
-        {
-            contacts = new List<Contact>();
-        }
-
-        contacts.Add(contact);
-
-        string json = JsonSerializer.Serialize(contacts, new JsonSerializerOptions { WriteIndented = true });
-        File.WriteAllText(FilePath, json);
     }
 }
