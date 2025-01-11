@@ -1,24 +1,24 @@
 ﻿using System.Text.Json;
+using ContactManager.Helpers;
 using ContactManager.Models;
 
 namespace ContactManager.Services;
 
 public class ContactListService
 {
-    private readonly string FilePath = "contacts.json";
+    private readonly ContactFileService _contactFileService;
+
+    public ContactListService(ContactFileService contactFileService)
+    {
+        _contactFileService = contactFileService;
+    }
+
     public void ShowContactList()
     {
-        if (!File.Exists(FilePath))
-        {
-            Console.WriteLine("No contacts found");
-            return;
-        }
-
         try
         {
-            string json = File.ReadAllText(FilePath);
 
-            List<Contact>? contacts = JsonSerializer.Deserialize<List<Contact>>(json);
+            List<Contact>? contacts = _contactFileService.LoadContacts();
 
             if (contacts == null || contacts.Count == 0)
             {

@@ -33,7 +33,7 @@ public class ContactCreateService
         Console.Write("Enter city: ");
         newContact.City = Console.ReadLine()!;
 
-        SaveContactToFile.SaveContactToJsFile(newContact, "contacts.json");
+        ContactFileHelper.SaveContactToJsFile(newContact, "contacts.json");
 
         Console.WriteLine("\nContact successfully created.");
 

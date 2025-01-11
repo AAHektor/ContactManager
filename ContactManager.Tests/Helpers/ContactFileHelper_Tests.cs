@@ -4,7 +4,7 @@ using ContactManager.Helpers;
 using ContactManager.Models;
 namespace ContactManager.Tests.Helpers;
 
-public class SaveContactToFile_Tests
+public class ContactFileHelper_Tests
 {
     [Fact]
     public void SaveContactToFile_ShouldSaveContactCorrectly()
@@ -23,7 +23,7 @@ public class SaveContactToFile_Tests
 
         };
         //Act
-        SaveContactToFile.SaveContactToJsFile(contact, testFilePath);
+        ContactFileHelper.SaveContactToJsFile(contact, testFilePath);
 
         //Assert
         Assert.True(File.Exists(testFilePath), "The contact file was not created.");
@@ -36,6 +36,34 @@ public class SaveContactToFile_Tests
         Assert.Equal("Peter", contacts[0].FirstName);
         Assert.Equal("Petersson", contacts[0].LastName);
         Assert.Equal("peter@domain.com", contacts[0].Email);
+
+        if (File.Exists(testFilePath))
+        {
+            File.Delete(testFilePath);
+        }
+    }
+
+    [Fact]
+    public void LoadContactToFile_ShouldReturnEmptyList_WhenFileDoesNotExist()
+    {
+        string testFilePath = "nonexistent_contacts.json";
+
+        var contacts = ContactFileHelper.LoadContactsFromFile(testFilePath);
+
+        Assert.NotNull(contacts);
+        Assert.Empty(contacts);
+    }
+
+    [Fact]
+    public void LoadContactsFromFile_ShouldReturnEmptyList_WhenFileHasInvalidJson()
+    {
+        string testFilePath = "invalid_contacts.json";
+        File.WriteAllText(testFilePath, "{ invalid json }");
+
+        var contacts = ContactFileHelper.LoadContactsFromFile(testFilePath);
+
+        Assert.NotNull(contacts);
+        Assert.Empty(contacts);
 
         if (File.Exists(testFilePath))
         {

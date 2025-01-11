@@ -4,9 +4,10 @@ public class MenuDialogs
 {
     public void CreateUserDialog()
     {
-        var ShowContacts = new ContactListService();
-        var ShowContactCreate = new ContactCreateService();
-        var QuitProgam = new QuitProgramService();
+        var contactFileService = new ContactFileService();
+        var showContacts = new ContactListService(contactFileService);
+        var showContactCreate = new ContactCreateService();
+        var quitProgam = new QuitProgramService();
 
         bool running = true;
 
@@ -27,16 +28,16 @@ public class MenuDialogs
             {
                 case "1":
                     Console.Clear();
-                    ShowContacts.ShowContactList();
+                    showContacts.ShowContactList();
                     break;
 
                 case "2":
                     Console.Clear();
-                    ShowContactCreate.ShowContactCreate();
+                    showContactCreate.ShowContactCreate();
                     break;
 
                 case "3":
-                    QuitProgam.ShowQuitProgram();
+                    quitProgam.ShowQuitProgram();
                     break;
 
                 default:
