@@ -16,4 +16,6 @@ public class ContactFileService
     {
         return ContactFileHelper.LoadContactsFromFile(_filePath);
     }
+
+    public string FilePath => _filePath;
 }
