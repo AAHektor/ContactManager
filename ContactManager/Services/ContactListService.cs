@@ -45,6 +45,6 @@ public class ContactListService
             Console.WriteLine($"An error occurred {ex.Message}");
         }
 
-        Console.ReadKey();
+        
     }
 }

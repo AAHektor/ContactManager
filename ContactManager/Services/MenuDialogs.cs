@@ -4,7 +4,7 @@ public class MenuDialogs
 {
     public void CreateUserDialog()
     {
-        var contactFileService = new ContactFileService();
+        var contactFileService = new ContactFileService("contacts.json");
         var showContacts = new ContactListService(contactFileService);
         var showContactCreate = new ContactCreateService();
         var quitProgam = new QuitProgramService();
@@ -29,6 +29,7 @@ public class MenuDialogs
                 case "1":
                     Console.Clear();
                     showContacts.ShowContactList();
+                    Console.ReadKey();
                     break;
 
                 case "2":

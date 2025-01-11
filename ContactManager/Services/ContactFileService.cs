@@ -5,7 +5,12 @@ namespace ContactManager.Services;
 
 public class ContactFileService
 {
-    private readonly string _filePath = "contacts.json";
+    private readonly string _filePath;
+
+    public ContactFileService(string filePath)
+    {
+        _filePath = filePath;
+    }
 
     public List<Contact>? LoadContacts()
     {
