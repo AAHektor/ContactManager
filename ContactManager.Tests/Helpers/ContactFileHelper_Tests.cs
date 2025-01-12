@@ -7,6 +7,10 @@ namespace ContactManager.Tests.Helpers;
 public class ContactFileHelper_Tests
 {
     [Fact]
+    /* Detta är genererat av Chat GPT 4o - Denna kod kontrollerar att en kontakt sparas korrekt i en fil.
+     * först skapas en testkontakt som sparas i filen. Därefter kontrollerar den att filen skapades och att
+     * kontaktinformationen sparades korrekt. Slutligen tar den bort testfilen. 
+     */
     public void SaveContactToFile_ShouldSaveContactCorrectly()
     {
         //Arrange

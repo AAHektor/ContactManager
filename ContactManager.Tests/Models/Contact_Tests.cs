@@ -22,7 +22,8 @@ public class Contact_Tests
 
     [Fact]
     /*
-     Detta är genererat av Chat GPT 4o - Denna kod gör att egenskaperna kan tilldelas och läsas in korrekt. 
+     Detta är genererat av Chat GPT 4o - Denna kod kontrollerar att egenskaperna kan tilldelas och läsas in korrekt. 
+    Först sätter vi värden på en kontakt, sedan kollar vi att de värden vi satte faktiskt finns i objektet.
      */
     public void Contact_ShouldAllowPropertyAssignment()
     {

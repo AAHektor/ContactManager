@@ -5,6 +5,10 @@ namespace ContactManager.Helpers;
 
 public static class ContactFileHelper
 {
+    /* Detta är genererat av Chat GPT 4o - Denna kod försöker läsa en fil för att få en lista med kontakter.
+     * Om filen finns läser den innehållet och försöker omvandla det till en lista med kontakter. 
+     * Om filen inte finns eller om något blir fel så returnerar den en tom lista. 
+     */
     public static List<Contact> LoadContactsFromFile(string filePath)
     {
         try
@@ -29,6 +33,10 @@ public static class ContactFileHelper
         } 
         
     }
+
+    /* Detta är genererat av Chat GPT 4o - Denna kod lägger till en ny kontakt i filen. Först läser den in kontakterna som finns i filen
+     * sedan lägger den till den nya kontakten. Slutligen sparar den hela listan med kontakter till filen så att den nya kontakten följer med. 
+     */
     public static void SaveContactToJsFile(Contact contact, string filePath)
     {
         List<Contact> contacts = LoadContactsFromFile(filePath);

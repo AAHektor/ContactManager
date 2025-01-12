@@ -24,6 +24,24 @@ public class ContactListService_Tests
     }
 
     [Fact]
+    public void ShowContactList_ShouldReturnErrorMsgWhenFileDoesNotExist()
+    {
+        var contactFileService = new ContactFileService("non_existent_file.json");
+        var contactListService = new ContactListService(contactFileService);
+
+        var sw = new StringWriter();
+        Console.SetOut(sw);
+
+        contactListService.ShowContactList();
+
+        var output = sw.ToString().Trim();
+        Assert.Equal("No contacts found.", output);
+    }
+
+    [Fact]
+    /* Detta är genererat av Chat GPT 4o - Denna kod kontrollerar att korrekt kontaktinformation skrivs ut i konsolen när metoden ShowContactList() anropas.
+     * Först skapas två testkontakter med värden, sparar dem i en fil, contacts.json. Sedan säkerställer att informationen visas som förväntat. Slutligen tar bort filen.
+     */
     public void ShowContactList_ShouldReturnCorrectContactInformation()
     {
         var contacts = new List<Contact>
@@ -51,4 +69,6 @@ public class ContactListService_Tests
 
         if (File.Exists(filePath)) File.Delete(filePath);
     }
+
+
 }
